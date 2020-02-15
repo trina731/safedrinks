@@ -8,18 +8,20 @@ const mapStyles = {
   height: '100%'
 };
 
+
 export class MapPage extends Component {
   state = {
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
     selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
   };
-
+  
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+
     });
 
   onClose = props => {
@@ -37,14 +39,15 @@ export class MapPage extends Component {
         centerAroundCurrentLocation
         google={this.props.google}
       >
-        <Marker onClick={this.onMarkerClick} name={'Trina\'s Current Location'} />
+        <Marker onClick={this.onMarkerClick} name={'Devon\'s Current Location'} />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
           <div>
-            <h4>{this.state.selectedPlace.name}</h4>
+            <h4 style={{float : 'left', paddingRight : '5px'}}>{this.state.selectedPlace.name}</h4>
+            <img src="https://randomuser.me/api/portraits/men/86.jpg"></img>
           </div>
         </InfoWindow>
       </CurrentLocation>

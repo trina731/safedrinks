@@ -4,6 +4,7 @@ import Home from './Home.js'
 import Nav from './Nav.js'
 import MapPage from './MapPage.js'
 import ProfilePage from './ProfilePage.js'
+import GroupsPage from './Groups.js'
 import './App.scss'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                                 <Route exact path="/" component={Home}/>
                                 <Route exact path="/map" component={MapPage}/>
                                 <Route exact path="/me" component={ProfilePage}/>
+                                <Route exact path="/groups" component={GroupsPage}/>
                                 <Redirect to="/404"/>
                             </Switch>
                         </div>

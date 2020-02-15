@@ -18,12 +18,11 @@ class ProfilePage extends Component {
 
                 </img>
                 <h5 className="name">Devon Marshall</h5>
-
+                <i className="editUser tiny material-icons">edit</i>
                 <ul className="userData">
                     <li>Weight: 145 lbs / 66 kg</li>
                     <li>Height: 6'1" / 185 cm</li>
                     <li>Phone: (251)-964-1575</li>
-                    <i className="editUser tiny material-icons">edit</i>
                 </ul>
             </div>
         )
