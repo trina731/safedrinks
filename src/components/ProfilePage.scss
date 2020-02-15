@@ -1,0 +1,18 @@
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .avatar {
+            border-radius: 50%;
+            border: .5px dashed lightblue;
+            width: 100px;
+        }
+        .name {
+
+        }
+    }
+}

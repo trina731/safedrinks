@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import './Nav.scss'
 
 class Nav extends Component {
@@ -10,17 +11,17 @@ class Nav extends Component {
                 </div>
                 <nav className="bottomNav teal lighten-1">
                     <ul className="center">
-                        <li>
+                        <li className={this.props.location.pathname.substring(0, 7) === '/groups' ? 'active' : ''}>
                             <a href="/groups">
                                 <i className="large material-icons">group</i>
                             </a>
                         </li>
-                        <li>
+                        <li className={this.props.location.pathname.substring(0, 4) === '/map' ? 'active' : ''}>
                             <a href="/map">
                                 <i className="large material-icons">map</i>
                             </a>
                         </li>
-                        <li>
+                        <li className={this.props.location.pathname.substring(0, 3) === '/me' ? 'active' : ''}>
                             <a href="/me">
                                 <i className="large material-icons">person</i>
                             </a>
@@ -32,4 +33,4 @@ class Nav extends Component {
     }
 }
 
-export default Nav
+export default withRouter(Nav)
