@@ -3,12 +3,6 @@ import { GoogleApiWrapper} from 'google-maps-react';
 import { InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Map';
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
-
-
 export class MapPage extends Component {
   state = {
     showingInfoWindow: false,  //Hides or the shows the infoWindow

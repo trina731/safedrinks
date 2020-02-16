@@ -57,7 +57,7 @@ const getUserData = async () => {
         for (let i = 0; i < user.calories.data.length; i++) {
             user.heartRate.data.push({
                 time: user.calories.data[i].time,
-                value: (Number(user.calories.data[i].value) * 8 / 4.184 + 55.0969 - 0.1988 * W - 0.2017 * A) / 0.6309 + (Math.random() - .3) * 20 + 10
+                value: (Number(user.calories.data[i].value) * 8 / 4.184 + 55.0969 - 0.1988 * W - 0.2017 * A) / 0.6309 + (Math.random() - .3) * 12 + 10
             })
         }
         lastData = user
