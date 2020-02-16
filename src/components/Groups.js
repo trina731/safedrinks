@@ -7,6 +7,8 @@ import {
     Link
   } from "react-router-dom";
 
+import BarChart from './BarChart.js';
+
 const min = 10000000;
 const max = 99999999;
 const rand = Math.floor(min + Math.random() * (max - min));
@@ -49,12 +51,13 @@ class Groups extends Component{
     }
 }  
     function Home() {
-      return <h4>Current Session</h4>;
+      return (<BarChart />);
     }
     
     function Create() {
     return(<div>
         <h4> Your group ID is: {rand}</h4>
+        <p>You have been added to this group. Go back to the current session to see who has joined your group.</p>
     </div>);
     }
 
