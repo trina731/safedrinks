@@ -23,7 +23,7 @@ class ProfilePage extends Component {
     }
     renderUser() {
         return (
-            <div className="userInfo">
+            <div className="userProfileInfo">
                 <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/86.jpg">
 
                 </img>

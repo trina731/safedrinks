@@ -9,19 +9,47 @@
     align-items: center;
     .userInfo {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         .person{
+          margin: 0 50px;
+          width: 100%;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
+          justify-content: space-between;
+          .nameAvatar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
           .avatar {
+              margin-left: 20px;
+              margin-right: 20px;
               border-radius: 50%;
               border: .5px dashed lightblue;
-              width: 50%;
+              width: 32px;
           }
           .name {
         }
       }
     }
+}
+
+.notification {
+  width: 300px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  .close-icon {
+  }
 }

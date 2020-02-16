@@ -19,7 +19,7 @@ class Groups extends Component{
       <div className="profileContainer">
         <Router>
           <div>
-            <nav>
+            <nav className="teal lighten-3">
               <ul>
                 <li>
                   <Link to="/">Current Session</Link>
@@ -43,8 +43,10 @@ class Groups extends Component{
                 <Join />
               </Route>
               <Route path="/">
-                <Home />
+                <span className="notification orange lighten-2">Have you checked on Maruth?<i className="close-icon tiny material-icons">close</i></span>
+                <h5>Your Group</h5>
                 {this.renderGroup()}
+                <Home />
               </Route>
             </Switch>
           </div>
@@ -55,55 +57,54 @@ class Groups extends Component{
 
     renderGroup() {
       return (
-          <div className="userInfo">
-            <div className="person">
-              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/75.jpg">
-              </img>
-              <h5 className="name">Calvin</h5>
+          <div className="userInfo collection">
+            <div className="person collection-item">
+              <div className="nameAvatar">
+                <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/75.jpg">
+                </img>
+                <h6 className="name">Calvin</h6>
               </div>
-              <div className="person">
-              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/women/75.jpg">
-              </img>
-              <h5 className="name">Isil</h5>
+              <span>BAC: 0.17</span>
+            </div>
+            <div className="person collection-item">
+              <div className="nameAvatar">
+                <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/women/75.jpg">
+                </img>
+                <h6 className="name">Isil</h6>
               </div>
-              <div className="person">
-              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/32.jpg">
-              </img>
-              <h5 className="name">Maruth</h5>
+              <span>BAC: 0.09</span>
+            </div>
+            <div className="person collection-item">
+              <div className="nameAvatar">
+                <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/32.jpg">
+                </img>
+                <h6 className="name">Maruth</h6>
               </div>
-              <div className="person">
-              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/21.jpg">
-              </img>
-              <h5 className="name">Aditya</h5>
-              </div>
-              <div className="person">
-              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/4.jpg">
-              </img>
-              <h5 className="name">Michael</h5>
-              </div>
+              <span>BAC: 0.24</span>
+            </div>
           </div>
       )
   }
 }  
-    function Home() {
-      return (<BarChart />);
-    }
-    
-    function Create() {
-    return(<div>
-        <h4> Your group ID is: {rand}</h4>
-        <p>You have been added to this group. Go back to the current session to see who has joined your group.</p>
-    </div>);
-    }
+function Home() {
+  return (<BarChart />);
+}
 
-    function Join() {
-        return(<div>
-            <h4>Join group: </h4>
-            <input
-            type="text"
-         />
-        </div>);
-      }
+function Create() {
+  return(<div>
+      <h4> Your group ID is: {rand}</h4>
+      <p>You have been added to this group. Go back to the current session to see who has joined your group.</p>
+  </div>);
+}
+
+function Join() {
+    return(<div>
+        <h4>Join group: </h4>
+        <input
+        type="text"
+      />
+    </div>);
+}
     
     
 export default Groups;

@@ -4,7 +4,7 @@ import {HorizontalBar} from 'react-chartjs-2';
 import './BarChart.scss'
 
 const data = {
-  labels: ['Calvin', 'Isil', 'Maruth', 'Aditya', 'Michael'],
+  labels: ['Calvin', 'Isil', 'Maruth'],
   datasets: [
     {
       label: 'BAC Level',
@@ -14,7 +14,7 @@ const data = {
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(0, 181, 204, 1)',
       hoverBorderColor: 'rgba(44, 130, 201, 1)',
-      data: [0.17, 0.00, 0.24, 0.06, 0.13]
+      data: [0.17, 0.09, 0.24]
     }
   ]
 };
@@ -35,7 +35,7 @@ class BarChart extends React.Component{
   render() {
     return (
   <div>        
-    <h2>My Circle</h2>
+      <h6>BAC Levels</h6>
         <HorizontalBar data={data} width={300} height={200} options={{ maintainAspectRatio: false }}
 />
       </div>
