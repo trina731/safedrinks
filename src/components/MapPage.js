@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper} from 'google-maps-react';
+import { GoogleApiWrapper} from 'google-maps-react';
 import { InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Map';
-
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
-
+import './MapPage.scss'
 
 export class MapPage extends Component {
   state = {
@@ -35,36 +30,30 @@ export class MapPage extends Component {
 
   render() {
     return (
-      <div>
-      <CurrentLocation
-        centerAroundCurrentLocation
-        google={this.props.google}
-      >
-        <Marker onClick={this.onMarkerClick} name={'Devon\'s Current Location'} />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+      <div className="mapContainer">
+        <h5>Map</h5>
+        <CurrentLocation
+          centerAroundCurrentLocation
+          google={this.props.google}
+          className="map"
         >
-          <div>
-            <h4 style={{float : 'left', paddingRight : '5px'}}>{this.state.selectedPlace.name}</h4>
-            <img src="https://randomuser.me/api/portraits/men/86.jpg"></img>
-          </div>
-        </InfoWindow>
-        <Marker onClick = { this.onMarkerClick } position = {{ lat: 37.4274745, lng: -122.1719077}} name = { 'Isil\'s Location'}
-    />
-    <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div>
-            <h4 style={{float : 'left', paddingRight : '5px'}}>{this.state.selectedPlace.name}</h4>
-            <img src="https://randomuser.me/api/portraits/women/86.jpg"></img>
-          </div>
+          <Marker onClick={this.onMarkerClick} name={'Isil\'s Current Location'}
+            position={{lat: 37.41, lng: -122.12}}/>
+          <Marker onClick={this.onMarkerClick} name={'Sanjit\'s Current Location'}
+            position={{lat: 37.42, lng: -122.17}}/>
+          <Marker onClick={this.onMarkerClick} name={'Devon\'s Current Location'} />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h6 style={{float : 'left', paddingRight : '5px'}}>{this.state.selectedPlace.name}</h6>
+              {/* <img alt="avatar" src="https://randomuser.me/api/portraits/men/86.jpg"></img> */}
+            </div>
           </InfoWindow>
-          </CurrentLocation>
-    </div>
+        </CurrentLocation>
+      </div>
     );
   }
 }
