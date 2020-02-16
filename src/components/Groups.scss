@@ -3,35 +3,25 @@
     background-image: linear-gradient(to bottom,#2c4053 0,#2c4053 100%) !important; /* override background image gradient w/ flat color */
 }
 
-.create-button {
-    background-color: #299FA8;
-    border: none;
-    color: white;
-    padding: 0px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    position:absolute;
-    transition: .5s ease;
-    top: 10%;
-    left: 25%;
-    width: 50%;
-
-  }
-
-  .join-button {
-    background-color: #299FA8;
-    border: none;
-    color: white;
-    padding: 0px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    position:absolute;
-    transition: .5s ease;
-    top: 15%;
-    left: 25%;
-    width: 50%;
-  }
+  .profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .userInfo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .person{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .avatar {
+              border-radius: 50%;
+              border: .5px dashed lightblue;
+              width: 50%;
+          }
+          .name {
+        }
+      }
+    }
+}
