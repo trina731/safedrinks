@@ -18,7 +18,7 @@ const getBAC = async (test_sample) => {
     const data = []
     test_sample.data.forEach(key => {
         data.push([
-            key.value
+            (key.value - 60) / 40
         ])
     })
     const response = await azure.post(azure_uri, { data })
