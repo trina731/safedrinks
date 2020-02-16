@@ -3,26 +3,26 @@ const axios = require('axios')
 
 const app = express()
 
-const PORT = 3000
+const PORT = 8000
 
 const fitbit = axios.create({
     baseURL: 'https://api.fitbit.com',
     timeout: 1000,
-    headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMkJMM0ciLCJzdWIiOiI4OUpDRzQiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd251dCB3cHJvIHdzbGUgd3dlaSB3c29jIHdzZXQgd2FjdCB3bG9jIiwiZXhwIjoxNTgxODQ0NTQ5LCJpYXQiOjE1ODE4MTU3NDl9.p_sqWnFydR8hPY-pNEveE7iseTATc6eNl7QXe-btto8'}
+    headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMkJMM0ciLCJzdWIiOiI4OUpDRzQiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3BybyB3bnV0IHdzbGUgd3dlaSB3c29jIHdzZXQgd2FjdCB3bG9jIiwiZXhwIjoxNTgyNDU2NTM4LCJpYXQiOjE1ODE4NTE3NjN9.r9VzMufMWfvy_8G0dJFsUdhsDTrCGBtaxQokYTZc4iA'}
 })
 
-const lastData = undefined
-const lastTime = Date.now()
+let lastData = undefined
+let lastTime = Date.now()
 
 const getUserData = async () => {
     if (lastData === undefined || Date.now() - lastTime > 60000) {
         const user = {}
         user.steps = await new Promise((resolve, reject) => {
-            fitbit.get('/1/user/-/activities/steps/date/2020-02-15/1d.json').then((response) => {
+            fitbit.get('/1/user/-/activities/steps/date/2020-02-16/1d.json').then((response) => {
                 const data = response.data['activities-steps-intraday'].dataset
                 const res = {total: 0, data: []}
                 let cnt = 0
-                for (let i = Math.max(0, data.length - 10); i < data.length; i++) {
+                for (let i = Math.max(0, data.length - 20); i < data.length; i++) {
                     cnt += data[i].value
                     res.data.push(data[i])
                 }
@@ -34,11 +34,11 @@ const getUserData = async () => {
             })
         })
         user.calories = await new Promise((resolve, reject) => {
-            fitbit.get('/1/user/-/activities/calories/date/2020-02-15/1d.json').then((response) => {
+            fitbit.get('/1/user/-/activities/calories/date/2020-02-16/1d.json').then((response) => {
                 const data = response.data['activities-calories-intraday'].dataset
                 const res = {total: 0, data: []}
                 let cnt = 0
-                for (let i = Math.max(0, data.length - 10); i < data.length; i++) {
+                for (let i = Math.max(0, data.length - 20); i < data.length; i++) {
                     cnt += data[i].value
                     res.data.push(data[i])
                 }
@@ -50,12 +50,22 @@ const getUserData = async () => {
             })
         })
 
-        // ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 x T
-        // user.heartRate =
-
+        const A = 24
+        const W = 70
+        // ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 
+        user.heartRate = { data: [] }
+        for (let i = 0; i < user.calories.data.length; i++) {
+            user.heartRate.data.push({
+                time: user.calories.data[i].time,
+                value: (Number(user.calories.data[i].value) * 8 / 4.184 + 55.0969 - 0.1988 * W - 0.2017 * A) / 0.6309 + (Math.random() - .3) * 20 + 10
+            })
+        }
+        lastData = user
+        lastTime = Date.now()
         return user
     }
     else {
+        // console.log('have data already')
         return lastData
     }
 }

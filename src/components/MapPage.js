@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper} from 'google-maps-react';
+import { GoogleApiWrapper} from 'google-maps-react';
 import { InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Map';
 
@@ -47,7 +47,7 @@ export class MapPage extends Component {
         >
           <div>
             <h4 style={{float : 'left', paddingRight : '5px'}}>{this.state.selectedPlace.name}</h4>
-            <img src="https://randomuser.me/api/portraits/men/86.jpg"></img>
+            <img alt="avatar" src="https://randomuser.me/api/portraits/men/86.jpg"></img>
           </div>
         </InfoWindow>
       </CurrentLocation>
