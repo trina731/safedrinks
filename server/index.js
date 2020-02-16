@@ -1,9 +1,29 @@
 const express = require('express')
 const axios = require('axios')
-
 const app = express()
 
 const PORT = 8000
+
+const azure_uri = "http://13.87.230.119/api/v1/service/hr-prediction2/score";
+const azure_apiKey = "uV9vFguDxaHw6szpb1nIGgbBqRJgsa5A";
+
+const azure = axios.create({
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + azure_apiKey,
+    }
+})
+
+const getBAC = async (test_sample) => {
+    const data = []
+    test_sample.data.forEach(key => {
+        data.push([
+            key.value
+        ])
+    })
+    const response = await azure.post(azure_uri, { data })
+    return response.data
+}
 
 const fitbit = axios.create({
     baseURL: 'https://api.fitbit.com',
@@ -52,7 +72,7 @@ const getUserData = async () => {
 
         const A = 24
         const W = 70
-        // ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 
+        // ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60
         user.heartRate = { data: [] }
         for (let i = 0; i < user.calories.data.length; i++) {
             user.heartRate.data.push({
@@ -60,6 +80,8 @@ const getUserData = async () => {
                 value: (Number(user.calories.data[i].value) * 8 / 4.184 + 55.0969 - 0.1988 * W - 0.2017 * A) / 0.6309 + (Math.random() - .3) * 12 + 10
             })
         }
+        user.bac = await getBAC(user.heartRate)
+
         lastData = user
         lastTime = Date.now()
         return user
