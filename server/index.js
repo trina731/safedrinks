@@ -22,7 +22,11 @@ const getBAC = async (test_sample) => {
         ])
     })
     const response = await azure.post(azure_uri, { data })
-    return response.data
+    const res = []
+    response.data.forEach(key => {
+        res.push(key / 20 - .005)
+    })
+    return res
 }
 
 const fitbit = axios.create({

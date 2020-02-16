@@ -16,6 +16,14 @@
         }
     }
     .statsContainer {
-        margin-bottom: 50px;
+        .graphContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .graph {
+                margin-top: 20px;
+            }
+        }
+        margin-bottom: 80px;
     }
 }

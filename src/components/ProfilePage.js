@@ -9,7 +9,8 @@ class ProfilePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: undefined
+            data: undefined,
+            bacData: undefined
         }
         this.loadUserData = this.loadUserData.bind(this)
     }
@@ -47,7 +48,15 @@ class ProfilePage extends Component {
                         if (isLoading) return "Loading..."
                         if (data) {
                             return (
-                                <Line width={400} height={350} data={this.state.data}/>
+                                <div className="graphContainer">
+                                    <div className="graph">
+                                        <Line width={400} height={350} data={this.state.data}/>
+                                    </div>
+                                    <div className="graph">
+                                        <Line width={400} height={350} data={this.state.bacData} options={{
+                                            scales: {yAxes: [{ ticks: { min: 0, max: .4 }}]}}}/>
+                                    </div>
+                                </div>
                             )
                         }
                     }}
@@ -72,30 +81,46 @@ class ProfilePage extends Component {
                 steps.forEach(a => stepsData.push(a.value))
                 calories.forEach(a => caloriesData.push(a.value))
                 heartRate.forEach(a => heartRateData.push(a.value))
+                const bacData = data.bac
                 await _this.setState({
                     data: {
                         labels,
                         datasets: [
                             {
-                                label: 'Steps in last 10 minutes',
+                                label: 'Steps in last 20 minutes',
                                 fill: false,
                                 lineTension: .1,
                                 borderColor: 'grey',
                                 data: stepsData
                             },
                             {
-                                label: 'Calories burned in last 10 minutes',
+                                label: 'Calories burned in last 20 minutes',
                                 fill: false,
                                 lineTension: .1,
                                 borderColor: 'teal',
                                 data: caloriesData
                             },
                             {
-                                label: 'Heart rate in last 10 minutes',
+                                label: 'Heart rate in last 20 minutes',
                                 fill: false,
                                 lineTension: .1,
                                 borderColor: 'red',
                                 data: heartRateData
+                            }
+                        ]
+                    },
+                    bacData: {
+                        labels,
+                        datasets: [
+                            {
+                                label: 'BAC Content in last 20 minutes',
+                                fill: false,
+                                lineTension: .1,
+                                borderColor: 'teal',
+                                ticks: {
+                                    min: 0
+                                },
+                                data: bacData
                             }
                         ]
                     }

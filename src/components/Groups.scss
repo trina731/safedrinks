@@ -3,6 +3,14 @@
     background-image: linear-gradient(to bottom,#2c4053 0,#2c4053 100%) !important; /* override background image gradient w/ flat color */
 }
 
+.groupNav {
+  ul {
+    li {
+      margin: 0;
+    }
+  }
+}
+
   .profileContainer {
     display: flex;
     flex-direction: column;

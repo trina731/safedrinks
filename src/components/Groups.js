@@ -19,16 +19,16 @@ class Groups extends Component{
       <div className="profileContainer">
         <Router>
           <div>
-            <nav className="teal lighten-3">
+            <nav className="groupNav teal lighten-3">
               <ul>
                 <li>
-                  <Link to="/">Current Session</Link>
+                  <Link className="groupLink" to="/">Current Session</Link>
                 </li>
                 <li>
-                  <Link to="/create">Create Group</Link>
+                  <Link className="groupLink" to="/create">Create Group</Link>
                 </li>
                 <li>
-                  <Link to="/join">Join Group</Link>
+                  <Link className="groupLink" to="/join">Join Group</Link>
                 </li>
               </ul>
             </nav>
@@ -64,7 +64,7 @@ class Groups extends Component{
                 </img>
                 <h6 className="name">Calvin</h6>
               </div>
-              <span>BAC: 0.17</span>
+              <span>BAC: 0.11</span>
             </div>
             <div className="person collection-item">
               <div className="nameAvatar">

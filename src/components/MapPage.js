@@ -38,9 +38,11 @@ export class MapPage extends Component {
           className="map"
         >
           <Marker onClick={this.onMarkerClick} name={'Isil\'s Current Location'}
-            position={{lat: 37.41, lng: -122.12}}/>
-          <Marker onClick={this.onMarkerClick} name={'Sanjit\'s Current Location'}
+            position={{lat: 37.423, lng: -122.174}}/>
+          <Marker onClick={this.onMarkerClick} name={'Calvin\'s Current Location'}
             position={{lat: 37.42, lng: -122.17}}/>
+          <Marker onClick={this.onMarkerClick} name={'Maruth\'s Current Location'}
+            position={{lat: 37.42, lng: -122.15}}/>
           <Marker onClick={this.onMarkerClick} name={'Devon\'s Current Location'} />
           <InfoWindow
             marker={this.state.activeMarker}
