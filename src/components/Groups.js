@@ -16,6 +16,7 @@ const rand = Math.floor(min + Math.random() * (max - min));
 class Groups extends Component{ 
     render(){
     return (
+      <div className="profileContainer">
         <Router>
           <div>
             <nav>
@@ -43,12 +44,46 @@ class Groups extends Component{
               </Route>
               <Route path="/">
                 <Home />
+                {this.renderGroup()}
               </Route>
             </Switch>
           </div>
         </Router>
+        </div>
       );
     }
+
+    renderGroup() {
+      return (
+          <div className="userInfo">
+            <div className="person">
+              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/75.jpg">
+              </img>
+              <h5 className="name">Calvin</h5>
+              </div>
+              <div className="person">
+              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/women/75.jpg">
+              </img>
+              <h5 className="name">Isil</h5>
+              </div>
+              <div className="person">
+              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/32.jpg">
+              </img>
+              <h5 className="name">Maruth</h5>
+              </div>
+              <div className="person">
+              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/21.jpg">
+              </img>
+              <h5 className="name">Aditya</h5>
+              </div>
+              <div className="person">
+              <img className="avatar" alt="avatar" src="https://randomuser.me/api/portraits/men/4.jpg">
+              </img>
+              <h5 className="name">Michael</h5>
+              </div>
+          </div>
+      )
+  }
 }  
     function Home() {
       return (<BarChart />);

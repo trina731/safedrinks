@@ -36,7 +36,7 @@ class BarChart extends React.Component{
     return (
   <div>        
     <h2>My Circle</h2>
-        <HorizontalBar data={data} width={100} height={200} options={{ maintainAspectRatio: false }}
+        <HorizontalBar data={data} width={300} height={200} options={{ maintainAspectRatio: false }}
 />
       </div>
     );

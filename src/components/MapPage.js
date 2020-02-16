@@ -35,6 +35,7 @@ export class MapPage extends Component {
 
   render() {
     return (
+      <div>
       <CurrentLocation
         centerAroundCurrentLocation
         google={this.props.google}
@@ -50,7 +51,20 @@ export class MapPage extends Component {
             <img src="https://randomuser.me/api/portraits/men/86.jpg"></img>
           </div>
         </InfoWindow>
-      </CurrentLocation>
+        <Marker onClick = { this.onMarkerClick } position = {{ lat: 37.4274745, lng: -122.1719077}} name = { 'Isil\'s Location'}
+    />
+    <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <h4 style={{float : 'left', paddingRight : '5px'}}>{this.state.selectedPlace.name}</h4>
+            <img src="https://randomuser.me/api/portraits/women/86.jpg"></img>
+          </div>
+          </InfoWindow>
+          </CurrentLocation>
+    </div>
     );
   }
 }
