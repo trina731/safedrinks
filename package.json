@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "google-maps-react": "^2.0.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^2.0.2",
     "react-async": "^10.0.0",
     "react-d3-library": "^1.1.8",
